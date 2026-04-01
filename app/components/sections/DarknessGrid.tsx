@@ -20,31 +20,8 @@ function clamp(min: number, val: number, max: number) {
   return Math.min(max, Math.max(min, val));
 }
 
-function SportsCarSilhouette({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 640 200"
-      className={className}
-      aria-hidden="true"
-      focusable="false"
-    >
-      <path
-        d="M86 132c16-32 44-56 86-70 37-12 89-18 156-18h54c32 0 64 6 96 18 24 9 44 22 60 40l54 12c8 2 14 8 14 16v28c0 10-8 18-18 18h-28c-10 0-18-8-18-18v-8H152v8c0 10-8 18-18 18H98c-10 0-18-8-18-18v-26c0-5 2-10 6-14z"
-        fill="currentColor"
-        opacity="0.55"
-      />
-      <path
-        d="M214 58c26-6 64-10 114-10h54c20 0 42 3 66 8l-22 40H208l6-38z"
-        fill="currentColor"
-        opacity="0.35"
-      />
-      <circle cx="182" cy="148" r="34" fill="currentColor" opacity="0.65" />
-      <circle cx="182" cy="148" r="18" fill="#0b0b0c" opacity="0.9" />
-      <circle cx="476" cy="148" r="34" fill="currentColor" opacity="0.65" />
-      <circle cx="476" cy="148" r="18" fill="#0b0b0c" opacity="0.9" />
-    </svg>
-  );
-}
+const previewCarImage =
+  'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1800&q=80';
 
 function PreviewCard({
   selected,
@@ -65,16 +42,15 @@ function PreviewCard({
       <div className="relative h-56 sm:h-64">
         <div className="absolute inset-0 bg-[radial-gradient(600px_240px_at_20%_10%,rgba(212,175,55,0.14),transparent_60%),linear-gradient(180deg,rgba(0,0,0,0.05),rgba(0,0,0,0.6))]" />
 
-        {/* Sports car preview */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <SportsCarSilhouette className="h-36 w-[92%] text-white/35 sm:h-40" />
-        </div>
+        {/* Sports car preview image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${previewCarImage})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10" />
 
         {/* Tint overlay that responds to the selected VLT */}
-        <div
-          className="absolute inset-0 bg-black"
-          style={{ opacity: overlayOpacity }}
-        />
+        <div className="absolute inset-0 bg-black" style={{ opacity: overlayOpacity }} />
 
         <div className="absolute left-5 top-8 text-[72px] font-extrabold leading-none text-white/20 sm:text-[84px]">
           {String(selected.vlt).padStart(2, '0')}%

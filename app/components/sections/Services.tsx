@@ -49,39 +49,39 @@ export function Services() {
           </p>
         </div>
 
-        <div className="flex gap-5 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {services.map((service) => (
-            <article
-              key={service.title}
-              className="min-w-[18rem] overflow-hidden rounded-3xl border border-black/15 bg-black/90 text-white shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
-            >
-              <div
-                className="relative h-28 bg-cover bg-center"
-                style={{ backgroundImage: `url(${service.image})` }}
+        <div className="hide-scrollbar flex gap-5 overflow-x-auto overflow-y-hidden rounded-3xl">
+            {services.map((service) => (
+              <article
+                key={service.title}
+                className="min-w-[18rem] overflow-hidden rounded-3xl border border-black/15 bg-black/90 text-white shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
               >
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-              </div>
-              <div className="p-6">
-                <h3 className="font-display text-xl">{service.title}</h3>
-                <p className="mt-3 text-sm text-white/75">{service.copy}</p>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <a
-                    href="#intake"
-                    className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.25em]"
-                  >
-                    Book now
-                  </a>
-                  <a
-                    href="#intake"
-                    className="rounded-full bg-gradient-to-r from-[#FFF6DE] to-[#D4AF37] px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-black"
-                  >
-                    Get quote
-                  </a>
+                <div
+                  className="relative h-28 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${service.image})` }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
                 </div>
-              </div>
-            </article>
-          ))}
-        </div>
+                <div className="p-6">
+                  <h3 className="font-display text-xl">{service.title}</h3>
+                  <p className="mt-3 text-sm text-white/75">{service.copy}</p>
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    <a
+                      href="#intake"
+                      className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.25em]"
+                    >
+                      Book now
+                    </a>
+                    <a
+                      href="#intake"
+                      className="rounded-full bg-gradient-to-r from-[#FFF6DE] to-[#D4AF37] px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-black"
+                    >
+                      Get quote
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
       </div>
     </section>
   );

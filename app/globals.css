@@ -124,6 +124,18 @@ body {
   background: linear-gradient(90deg, var(--gold-light), var(--gold), var(--gold-dark));
 }
 
+/* Hide scrollbars for horizontal carousels while keeping scrollability */
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
 .grid-divider {
   border-top: 1px solid var(--divider);
 }
