@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { Playfair_Display, Inter } from 'next/font/google';
+import { Space_Mono, Inter } from 'next/font/google';
 import './globals.css';
 
-const playfair = Playfair_Display({
+const spaceMono = Space_Mono({
   subsets: ['latin'],
-  weight: ['600'],
-  variable: '--font-playfair',
+  weight: ['400', '700'],
+  variable: '--font-mono',
 });
 
 const inter = Inter({
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="en" className={`${spaceMono.variable} ${inter.variable}`}>
       <body className="antialiased">{children}</body>
     </html>
   );

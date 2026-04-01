@@ -17,8 +17,8 @@ const config: Config = {
         muted: '#BFC3C6'
       },
       fontFamily: {
-        display: ['var(--font-playfair)'],
-        sans: ['var(--font-inter)']
+        display: ['var(--font-mono)'],
+        sans: ['var(--font-inter)'],
       },
       boxShadow: {
         gold: '0 20px 40px rgba(201,149,50,0.35)',

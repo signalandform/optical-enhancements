@@ -1,10 +1,40 @@
 const services = [
-  { title: 'Auto window tinting', copy: 'Ceramic IR, carbon, and standard films cut to pattern with clean edges.' },
-  { title: 'Paint protection film', copy: 'Self-healing PPF in gloss or satin, from impact zones to full body.' },
-  { title: 'Alarms & remote start', copy: 'Security and convenience installs with clean wiring and OEM-style integration.' },
-  { title: 'Car audio & video', copy: 'Sound upgrades, amplifiers, speakers, and camera systems tuned for clarity.' },
-  { title: 'Ceramic coating', copy: 'Hydrophobic protection for paint, wheels, and glass—built for Texas weather.' },
-  { title: 'Auto detailing', copy: 'Interior resets, paint correction, and delivery-ready finishing for enthusiasts.' },
+  {
+    title: 'Auto window tinting',
+    copy: 'Ceramic IR, carbon, and standard films cut to pattern with clean edges.',
+    image:
+      'https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    title: 'Paint protection film',
+    copy: 'Self-healing PPF in gloss or satin, from impact zones to full body.',
+    image:
+      'https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    title: 'Alarms & remote start',
+    copy: 'Security and convenience installs with clean wiring and OEM-style integration.',
+    image:
+      'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    title: 'Car audio & video',
+    copy: 'Sound upgrades, amplifiers, speakers, and camera systems tuned for clarity.',
+    image:
+      'https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    title: 'Ceramic coating',
+    copy: 'Hydrophobic protection for paint, wheels, and glass—built for Texas weather.',
+    image:
+      'https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    title: 'Auto detailing',
+    copy: 'Interior resets, paint correction, and delivery-ready finishing for enthusiasts.',
+    image:
+      'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1400&q=80',
+  },
 ];
 
 export function Services() {
@@ -23,23 +53,31 @@ export function Services() {
           {services.map((service) => (
             <article
               key={service.title}
-              className="min-w-[18rem] rounded-3xl border border-black/15 bg-black/90 p-6 text-white shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
+              className="min-w-[18rem] overflow-hidden rounded-3xl border border-black/15 bg-black/90 text-white shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
             >
-              <h3 className="font-display text-xl">{service.title}</h3>
-              <p className="mt-3 text-sm text-white/75">{service.copy}</p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href="#intake"
-                  className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.25em]"
-                >
-                  Book now
-                </a>
-                <a
-                  href="#intake"
-                  className="rounded-full bg-gradient-to-r from-[#FFF6DE] to-[#D4AF37] px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-black"
-                >
-                  Get quote
-                </a>
+              <div
+                className="h-28 bg-cover bg-center"
+                style={{
+                  backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.10), rgba(0,0,0,0.85)), url(${service.image})`,
+                }}
+              />
+              <div className="p-6">
+                <h3 className="font-display text-xl">{service.title}</h3>
+                <p className="mt-3 text-sm text-white/75">{service.copy}</p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <a
+                    href="#intake"
+                    className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.25em]"
+                  >
+                    Book now
+                  </a>
+                  <a
+                    href="#intake"
+                    className="rounded-full bg-gradient-to-r from-[#FFF6DE] to-[#D4AF37] px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-black"
+                  >
+                    Get quote
+                  </a>
+                </div>
               </div>
             </article>
           ))}
