@@ -20,6 +20,11 @@
   --gold-stroke: rgba(212, 175, 55, 0.18);
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 body {
   min-height: 100vh;
   margin: 0;
