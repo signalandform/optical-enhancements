@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 const nav = [
   { href: '#services', label: 'Services' },
@@ -12,10 +13,17 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/40 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="#top" className="flex items-center gap-3">
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-r from-gold to-gold-dark text-xs font-extrabold text-night">
-            OA
-          </span>
-          <span className="text-xs font-semibold uppercase tracking-[0.28em] text-white/90">
+          <div className="relative h-9 w-[120px]">
+            <Image
+              src="/images/logo.png"
+              alt="Optical Auto Enhancements"
+              fill
+              sizes="120px"
+              className="object-contain"
+              priority
+            />
+          </div>
+          <span className="hidden text-xs font-semibold uppercase tracking-[0.28em] text-white/90 sm:inline">
             Optical Auto Enhancements
           </span>
         </Link>

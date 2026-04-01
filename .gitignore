@@ -4,3 +4,8 @@ out
 .DS_Store
 .env.local
 .env*
+
+# local build/helpers
+.venv/
+tmp/
+tmp-wall.pdf
