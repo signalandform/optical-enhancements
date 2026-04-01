@@ -17,7 +17,7 @@ const config: Config = {
         muted: '#BFC3C6'
       },
       fontFamily: {
-        display: ['var(--font-mono)'],
+        display: ['var(--font-display)'],
         sans: ['var(--font-inter)'],
       },
       boxShadow: {
