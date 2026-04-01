@@ -56,11 +56,11 @@ export function Services() {
               className="min-w-[18rem] overflow-hidden rounded-3xl border border-black/15 bg-black/90 text-white shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
             >
               <div
-                className="h-28 bg-cover bg-center"
-                style={{
-                  backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.10), rgba(0,0,0,0.85)), url(${service.image})`,
-                }}
-              />
+                className="relative h-28 bg-cover bg-center"
+                style={{ backgroundImage: `url(${service.image})` }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+              </div>
               <div className="p-6">
                 <h3 className="font-display text-xl">{service.title}</h3>
                 <p className="mt-3 text-sm text-white/75">{service.copy}</p>

@@ -29,7 +29,7 @@ export function Testimonials() {
   return (
     <section className="panel p-8" id="reviews">
       <div className="flex flex-col gap-8">
-        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+        <div className="sticky top-20 z-10 -mx-2 flex flex-col gap-3 rounded-3xl border border-white/10 bg-black/55 px-4 py-4 backdrop-blur md:flex-row md:items-end md:justify-between md:px-5">
           <div className="space-y-3">
             <p className="section-label">Recent reviews</p>
             <h2 className="font-display text-3xl text-white">What customers say when the bay door closes.</h2>
