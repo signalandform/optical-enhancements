@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 function StoreInfoCard() {
   return (
     <div className="mock-frame card-sheen p-7">
@@ -57,21 +59,25 @@ export function Hero() {
   return (
     <section className="panel p-8 md:p-10" id="store">
       <div className="mx-auto grid max-w-3xl gap-6 lg:grid-cols-[1fr_1fr]">
-        <div className="space-y-4">
+        <div className="flex flex-col items-center justify-center gap-5 text-center lg:items-start lg:text-left">
+          <div className="relative w-full max-w-md overflow-hidden rounded-3xl border border-white/10 bg-black/20 p-4">
+            <div className="relative aspect-[16/9] w-full">
+              <Image
+                src="/images/logo.png"
+                alt="Optical Auto Enhancements"
+                fill
+                sizes="(max-width: 1024px) 420px, 420px"
+                className="object-contain"
+                priority
+              />
+            </div>
+          </div>
           <p className="section-label">The studio</p>
           <h2 className="metallic-text font-display text-3xl leading-tight">Metallic protection, clean installs.</h2>
-          <p className="text-sm text-muted">
-            Removed the map panel per request—this top section is now all signal: location, hours, and CTAs.
+          <p className="max-w-md text-sm text-muted">
+            This section mirrors the location-style “at a glance” block—now with a larger logo on the left for quick
+            identification.
           </p>
-          <div className="mock-frame card-sheen p-6">
-            <div className="mock-line gold" />
-            <div className="mt-4 grid grid-cols-3 gap-3">
-              <div className="h-12 rounded-2xl border border-white/10 bg-black/30" />
-              <div className="h-12 rounded-2xl border border-white/10 bg-black/30" />
-              <div className="h-12 rounded-2xl border border-white/10 bg-black/30" />
-            </div>
-            <p className="mt-4 text-xs uppercase tracking-[0.35em] text-muted">Deck-style proof · metallic finish</p>
-          </div>
         </div>
         <StoreInfoCard />
       </div>
