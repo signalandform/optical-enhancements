@@ -23,9 +23,6 @@ export function Header() {
               priority
             />
           </div>
-          <span className="hidden text-xs font-semibold uppercase tracking-[0.28em] text-white/90 sm:inline">
-            Optical Auto Enhancements
-          </span>
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
