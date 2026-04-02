@@ -30,11 +30,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${display.variable} ${inter.variable}`}>
       <body className="antialiased">
-        <div className="flex min-h-screen flex-col">
-          <Header />
-          <div className="flex-1 pt-4 sm:pt-6">{children}</div>
-          <Footer />
-        </div>
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   );
