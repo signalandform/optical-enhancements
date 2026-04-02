@@ -29,10 +29,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${display.variable} ${inter.variable}`}>
-      <body className="antialiased pt-20 sm:pt-24">
-        <Header />
-        {children}
-        <Footer />
+      <body className="antialiased">
+        <div className="flex min-h-screen flex-col">
+          <Header />
+          <div className="flex-1 pt-4 sm:pt-6">{children}</div>
+          <Footer />
+        </div>
       </body>
     </html>
   );
