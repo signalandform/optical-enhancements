@@ -121,6 +121,7 @@ function LogoCard() {
 
 export function Hero() {
   const [activeId, setActiveId] = useState<ServiceVideo['id']>('window-tint');
+  const [progress, setProgress] = useState(0);
   const activeVideo = SERVICE_VIDEOS.find((item) => item.id === activeId) ?? SERVICE_VIDEOS[1];
   const activeIndex = SERVICE_VIDEOS.findIndex((item) => item.id === activeVideo.id);
 
@@ -136,8 +137,20 @@ export function Hero() {
               muted
               playsInline
               preload="metadata"
+              onLoadedMetadata={() => {
+                setProgress(0);
+              }}
+              onTimeUpdate={(event) => {
+                const video = event.currentTarget;
+                if (!video.duration || Number.isNaN(video.duration)) {
+                  return;
+                }
+
+                setProgress(video.currentTime / video.duration);
+              }}
               onEnded={() => {
                 const nextIndex = (activeIndex + 1) % SERVICE_VIDEOS.length;
+                setProgress(0);
                 setActiveId(SERVICE_VIDEOS[nextIndex].id);
               }}
               aria-label="Optical Auto Enhancements hero video"
@@ -154,19 +167,29 @@ export function Hero() {
                 <h2 className="metallic-text mt-3 font-display text-3xl leading-tight md:text-5xl">
                   {activeVideo.heading}
                 </h2>
-                <div className="mt-5 flex flex-wrap gap-2">
+                <div className="hide-scrollbar mt-5 flex flex-nowrap gap-2 overflow-x-auto pb-1">
                   {SERVICE_VIDEOS.map((service) => (
                     <button
                       key={service.id}
                       type="button"
-                      onClick={() => setActiveId(service.id)}
-                      className={`inline-flex rounded-full border px-4 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] transition ${
+                      onClick={() => {
+                        setProgress(0);
+                        setActiveId(service.id);
+                      }}
+                      className={`relative inline-flex shrink-0 overflow-hidden whitespace-nowrap rounded-full border px-4 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] transition ${
                         service.id === activeVideo.id
-                          ? 'border-gold/80 bg-gold/20 text-gold-light'
+                          ? 'border-gold/80 text-gold-light'
                           : 'border-white/20 bg-black/25 text-white/80 hover:text-white'
                       }`}
                     >
-                      {service.label}
+                      {service.id === activeVideo.id ? (
+                        <span
+                          className="absolute inset-y-0 left-0 bg-gold/20 transition-[width] duration-100"
+                          style={{ width: `${Math.min(progress * 100, 100)}%` }}
+                          aria-hidden
+                        />
+                      ) : null}
+                      <span className="relative z-10">{service.label}</span>
                     </button>
                   ))}
                 </div>
