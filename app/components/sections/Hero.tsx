@@ -57,7 +57,7 @@ const SERVICE_VIDEOS: ServiceVideo[] = [
 
 function StoreInfoCard() {
   return (
-    <div className="mock-frame card-sheen p-5 md:p-6">
+    <div className="mock-frame card-sheen h-full p-5 md:p-6">
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white">DeSoto, TX</p>
@@ -111,8 +111,8 @@ function StoreInfoCard() {
 
 function LogoCard() {
   return (
-    <div className="mock-frame card-sheen flex min-h-[220px] w-full items-center justify-center p-6 md:w-[320px] md:p-8">
-      <div className="relative h-20 w-[220px] md:h-24 md:w-[280px]">
+    <div className="mock-frame card-sheen flex h-full min-h-[220px] w-full items-center justify-center p-6 md:p-8">
+      <div className="relative h-20 w-[220px] md:h-24 md:w-[260px]">
         <Image src="/images/logo.png" alt="Optical Auto Enhancements" fill sizes="280px" className="object-contain" />
       </div>
     </div>
@@ -190,7 +190,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="mt-6 grid gap-4 md:grid-cols-[1fr_auto] md:items-stretch">
+      <div className="mt-6 grid gap-4 md:grid-cols-[2fr_1fr] md:items-stretch">
         <StoreInfoCard />
         <LogoCard />
       </div>
