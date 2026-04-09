@@ -111,9 +111,9 @@ function StoreInfoCard() {
 
 function LogoCard() {
   return (
-    <div className="mock-frame card-sheen flex h-full min-h-[220px] w-full items-center justify-center p-6 md:p-8">
-      <div className="relative h-20 w-[220px] md:h-24 md:w-[260px]">
-        <Image src="/images/logo.png" alt="Optical Auto Enhancements" fill sizes="280px" className="object-contain" />
+    <div className="mock-frame card-sheen flex h-full min-h-[220px] w-full items-center justify-center p-6 md:min-h-[260px] md:p-10">
+      <div className="relative h-24 w-[260px] md:h-36 md:w-[400px]">
+        <Image src="/images/logo.png" alt="Optical Auto Enhancements" fill sizes="400px" className="object-contain" />
       </div>
     </div>
   );
@@ -124,75 +124,77 @@ export function Hero() {
   const activeVideo = SERVICE_VIDEOS.find((item) => item.id === activeId) ?? SERVICE_VIDEOS[1];
 
   return (
-    <section className="panel p-4 md:p-6" id="store">
-      <div className="hero-video-wrap relative overflow-hidden rounded-3xl border border-white/10 bg-black/55">
-        <div className="relative aspect-[4/5] w-full md:aspect-[16/9]">
-          <video
-            key={activeVideo.id}
-            className="hero-video absolute inset-0 h-full w-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            aria-label="Optical Auto Enhancements hero video"
-          >
-            {activeVideo.sources.map((source) => (
-              <source key={source.src} src={source.src} type={source.type} />
-            ))}
-            Your browser does not support the hero video.
-          </video>
-          <div className="hero-video-overlay absolute inset-0" />
-          <div className="relative z-10 flex h-full items-end p-6 md:p-10">
-            <div className="max-w-xl">
-              <p className="section-label">Service preview</p>
-              <h2 className="metallic-text mt-3 font-display text-3xl leading-tight md:text-5xl">
-                {activeVideo.heading}
-              </h2>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {SERVICE_VIDEOS.map((service) => (
-                  <button
-                    key={service.id}
-                    type="button"
-                    onClick={() => setActiveId(service.id)}
-                    className={`inline-flex rounded-full border px-4 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] transition ${
-                      service.id === activeVideo.id
-                        ? 'border-gold/80 bg-gold/20 text-gold-light'
-                        : 'border-white/20 bg-black/25 text-white/80 hover:text-white'
-                    }`}
+    <section className="relative left-1/2 w-screen -translate-x-1/2 px-4 md:px-8" id="store">
+      <div className="mx-auto w-full max-w-[1520px]">
+        <div className="hero-video-wrap relative overflow-hidden rounded-3xl border border-white/10 bg-black/55">
+          <div className="relative aspect-[4/5] w-full md:aspect-[16/9]">
+            <video
+              key={activeVideo.id}
+              className="hero-video absolute inset-0 h-full w-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label="Optical Auto Enhancements hero video"
+            >
+              {activeVideo.sources.map((source) => (
+                <source key={source.src} src={source.src} type={source.type} />
+              ))}
+              Your browser does not support the hero video.
+            </video>
+            <div className="hero-video-overlay absolute inset-0" />
+            <div className="relative z-10 flex h-full items-end p-6 md:p-10">
+              <div className="max-w-xl">
+                <p className="section-label">Service preview</p>
+                <h2 className="metallic-text mt-3 font-display text-3xl leading-tight md:text-5xl">
+                  {activeVideo.heading}
+                </h2>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {SERVICE_VIDEOS.map((service) => (
+                    <button
+                      key={service.id}
+                      type="button"
+                      onClick={() => setActiveId(service.id)}
+                      className={`inline-flex rounded-full border px-4 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] transition ${
+                        service.id === activeVideo.id
+                          ? 'border-gold/80 bg-gold/20 text-gold-light'
+                          : 'border-white/20 bg-black/25 text-white/80 hover:text-white'
+                      }`}
+                    >
+                      {service.label}
+                    </button>
+                  ))}
+                </div>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <a
+                    href="#intake"
+                    className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-gold to-gold-dark px-6 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-night"
                   >
-                    {service.label}
-                  </button>
-                ))}
-              </div>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href="#intake"
-                  className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-gold to-gold-dark px-6 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-night"
-                >
-                  Book now
-                </a>
-                <a
-                  href="#intake"
-                  className="inline-flex items-center justify-center rounded-full border border-white/20 bg-black/25 px-6 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-white"
-                >
-                  Get quote
-                </a>
-                <Link
-                  href={activeVideo.href}
-                  className="inline-flex items-center justify-center rounded-full border border-white/20 bg-black/25 px-6 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-white"
-                >
-                  Explore service
-                </Link>
+                    Book now
+                  </a>
+                  <a
+                    href="#intake"
+                    className="inline-flex items-center justify-center rounded-full border border-white/20 bg-black/25 px-6 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-white"
+                  >
+                    Get quote
+                  </a>
+                  <Link
+                    href={activeVideo.href}
+                    className="inline-flex items-center justify-center rounded-full border border-white/20 bg-black/25 px-6 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-white"
+                  >
+                    Explore service
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="mt-6 grid gap-4 md:grid-cols-[2fr_1fr] md:items-stretch">
-        <StoreInfoCard />
-        <LogoCard />
+        <div className="mt-6 grid gap-4 md:grid-cols-[3fr_2fr] md:items-stretch">
+          <StoreInfoCard />
+          <LogoCard />
+        </div>
       </div>
     </section>
   );
