@@ -38,7 +38,10 @@ const SERVICE_VIDEOS: ServiceVideo[] = [
     label: 'Paint Protection',
     href: '/paint-protection',
     heading: 'Paint Protection',
-    sources: [{ src: '/videos/paint-protection.mp4', type: 'video/mp4' }],
+    sources: [
+      { src: '/videos/paint-protection.mp4', type: 'video/mp4' },
+      { src: '/videos/paint-protection.mov', type: 'video/mp4' },
+    ],
   },
   {
     id: 'glass-replacement',
