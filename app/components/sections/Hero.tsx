@@ -45,7 +45,10 @@ const SERVICE_VIDEOS: ServiceVideo[] = [
     label: 'Glass Replacement',
     href: '/glass-replacement',
     heading: 'Glass Replacement',
-    sources: [{ src: '/videos/glass-replacement.mp4', type: 'video/mp4' }],
+    sources: [
+      { src: '/videos/glass-replacement.mp4', type: 'video/mp4' },
+      { src: '/videos/glass-replacement.mov', type: 'video/mp4' },
+    ],
   },
 ];
 
