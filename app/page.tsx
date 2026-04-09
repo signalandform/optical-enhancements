@@ -7,7 +7,6 @@ import { CallForQuote } from './components/sections/CallForQuote';
 import { Testimonials } from './components/sections/Testimonials';
 import { Promotions } from './components/sections/Promotions';
 import { DarknessGrid } from './components/sections/DarknessGrid';
-import { IntakeForm } from './components/sections/IntakeForm';
 import { CTA } from './components/sections/CTA';
 
 function Section({ children }: { children: ReactNode }) {
@@ -29,7 +28,7 @@ export default function Home() {
                 <p className="mt-2 text-sm opacity-80">Get tint, wraps, PPF, or glass work now and pay over time.</p>
               </div>
               <a
-                href="#intake"
+                href="/book-now"
                 className="inline-flex rounded-full border border-black/20 bg-black/10 px-5 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-black"
               >
                 Ask about financing
@@ -62,9 +61,6 @@ export default function Home() {
         </Section>
         <Section>
           <DarknessGrid />
-        </Section>
-        <Section>
-          <IntakeForm />
         </Section>
         <Section>
           <CTA />

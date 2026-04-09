@@ -38,7 +38,7 @@ export function Header() {
         </nav>
 
         <Link
-          href="/#intake"
+          href="/book-now"
           className="inline-flex rounded-full bg-gradient-to-r from-gold to-gold-dark px-5 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-night"
         >
           Book now

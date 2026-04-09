@@ -11,7 +11,7 @@ export function CallForQuote() {
           Call now
         </a>
         <a
-          href="#intake"
+          href="/book-now"
           className="rounded-full border border-black/20 bg-white/15 px-7 py-4 text-xs font-semibold uppercase tracking-[0.2em]"
         >
           Get quote

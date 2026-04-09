@@ -36,13 +36,13 @@ export function Technology() {
 
         <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
-            href="#intake"
+            href="/book-now"
             className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-gold to-gold-dark px-6 py-3 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-night"
           >
             Book now
           </a>
           <a
-            href="#intake"
+            href="/book-now"
             className="inline-flex items-center justify-center rounded-full border border-white/10 bg-black/25 px-6 py-3 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-white"
           >
             Get quote

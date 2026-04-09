@@ -26,7 +26,7 @@ export function Footer() {
           <a className="block text-muted hover:text-white" href="#reviews">
             Reviews
           </a>
-          <a className="block text-muted hover:text-white" href="#intake">
+          <a className="block text-muted hover:text-white" href="/book-now">
             Get a quote
           </a>
         </div>

@@ -66,13 +66,13 @@ export function Services() {
                   <p className="mt-3 text-sm text-white/75">{service.copy}</p>
                   <div className="mt-6 flex flex-wrap gap-3">
                     <a
-                      href="#intake"
+                      href="/book-now"
                       className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.25em]"
                     >
                       Book now
                     </a>
                     <a
-                      href="#intake"
+                      href="/book-now"
                       className="rounded-full bg-gradient-to-r from-[#FFF6DE] to-[#D4AF37] px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-black"
                     >
                       Get quote

@@ -93,7 +93,7 @@ export function DarknessGrid() {
             <header className="flex items-center justify-between">
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/80">Optical</p>
               <a
-                href="#intake"
+                href="/book-now"
                 className="rounded-full bg-gradient-to-r from-gold to-gold-dark px-4 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-night"
               >
                 Get a quote
