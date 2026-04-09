@@ -106,6 +106,16 @@ function StoreInfoCard() {
   );
 }
 
+function LogoCard() {
+  return (
+    <div className="mock-frame card-sheen flex h-full min-h-[220px] items-center justify-center p-6 md:p-8">
+      <div className="relative h-20 w-full max-w-[280px] md:h-24">
+        <Image src="/images/logo.png" alt="Optical Auto Enhancements" fill sizes="280px" className="object-contain" />
+      </div>
+    </div>
+  );
+}
+
 export function Hero() {
   const [activeId, setActiveId] = useState<ServiceVideo['id']>('vehicle-wraps');
   const activeVideo = SERVICE_VIDEOS.find((item) => item.id === activeId) ?? SERVICE_VIDEOS[1];
@@ -114,17 +124,6 @@ export function Hero() {
     <section className="panel p-4 md:p-6" id="store">
       <div className="hero-video-wrap relative overflow-hidden rounded-3xl border border-white/10 bg-black/55">
         <div className="relative aspect-[4/5] w-full md:aspect-[16/9]">
-          <div className="absolute inset-0">
-            <Image
-              src="/images/logo.png"
-              alt=""
-              fill
-              sizes="100vw"
-              className="object-cover opacity-20"
-              aria-hidden
-              priority
-            />
-          </div>
           <video
             key={activeVideo.id}
             className="hero-video absolute inset-0 h-full w-full object-cover"
@@ -133,7 +132,6 @@ export function Hero() {
             loop
             playsInline
             preload="metadata"
-            poster="/images/logo.png"
             aria-label="Optical Auto Enhancements hero video"
           >
             {activeVideo.sources.map((source) => (
@@ -189,8 +187,9 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-6 grid gap-4 md:grid-cols-[1fr_auto] md:items-stretch">
         <StoreInfoCard />
+        <LogoCard />
       </div>
     </section>
   );
