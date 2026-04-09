@@ -81,7 +81,8 @@ export function Hero() {
             poster="/images/logo.png"
             aria-label="Optical Auto Enhancements hero video"
           >
-            <source src="/videos/hero.mov" type="video/quicktime" />
+            <source src="/videos/hero.mp4" type="video/mp4" />
+            <source src="/videos/hero.mov" type="video/mp4" />
             Your browser does not support the hero video.
           </video>
           <div className="hero-video-overlay absolute inset-0" />

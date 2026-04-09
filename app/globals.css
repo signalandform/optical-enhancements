@@ -156,8 +156,4 @@ body {
   .card-sheen::before {
     display: none;
   }
-
-  .hero-video {
-    display: none;
-  }
 }
