@@ -71,12 +71,6 @@ export function Services() {
                     >
                       Book now
                     </a>
-                    <a
-                      href="/book-now"
-                      className="rounded-full bg-gradient-to-r from-[#FFF6DE] to-[#D4AF37] px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-black"
-                    >
-                      Get quote
-                    </a>
                   </div>
                 </div>
               </article>

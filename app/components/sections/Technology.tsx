@@ -41,12 +41,6 @@ export function Technology() {
           >
             Book now
           </a>
-          <a
-            href="/book-now"
-            className="inline-flex items-center justify-center rounded-full border border-white/10 bg-black/25 px-6 py-3 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-white"
-          >
-            Get quote
-          </a>
         </div>
       </div>
     </section>

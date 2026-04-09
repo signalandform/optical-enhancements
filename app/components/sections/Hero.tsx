@@ -70,12 +70,6 @@ function StoreInfoCard() {
           >
             Book now
           </a>
-          <a
-            href="/book-now"
-            className="inline-flex items-center justify-center rounded-full border border-white/10 bg-black/25 px-4 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-white"
-          >
-            Get quote
-          </a>
         </div>
       </div>
 
@@ -200,12 +194,6 @@ export function Hero() {
                   >
                     Book now
                   </a>
-                  <a
-                    href="/book-now"
-                    className="inline-flex items-center justify-center rounded-full border border-white/20 bg-black/25 px-6 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-white"
-                  >
-                    Get quote
-                  </a>
                   <Link
                     href={activeVideo.href}
                     className="inline-flex items-center justify-center rounded-full border border-white/20 bg-black/25 px-6 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-white"
@@ -218,7 +206,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="mt-6 grid gap-4 md:grid-cols-[3fr_2fr] md:items-stretch">
+        <div className="mt-6 grid gap-4 md:grid-cols-2 md:items-stretch">
           <StoreInfoCard />
           <LogoCard />
         </div>
