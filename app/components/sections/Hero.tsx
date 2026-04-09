@@ -120,8 +120,9 @@ function LogoCard() {
 }
 
 export function Hero() {
-  const [activeId, setActiveId] = useState<ServiceVideo['id']>('vehicle-wraps');
+  const [activeId, setActiveId] = useState<ServiceVideo['id']>('window-tint');
   const activeVideo = SERVICE_VIDEOS.find((item) => item.id === activeId) ?? SERVICE_VIDEOS[1];
+  const activeIndex = SERVICE_VIDEOS.findIndex((item) => item.id === activeVideo.id);
 
   return (
     <section className="relative left-1/2 w-screen -translate-x-1/2 px-4 md:px-8" id="store">
@@ -133,9 +134,12 @@ export function Hero() {
               className="hero-video absolute inset-0 h-full w-full object-cover"
               autoPlay
               muted
-              loop
               playsInline
               preload="metadata"
+              onEnded={() => {
+                const nextIndex = (activeIndex + 1) % SERVICE_VIDEOS.length;
+                setActiveId(SERVICE_VIDEOS[nextIndex].id);
+              }}
               aria-label="Optical Auto Enhancements hero video"
             >
               {activeVideo.sources.map((source) => (
