@@ -114,6 +114,18 @@ body {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
+.hero-video-wrap {
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.48);
+}
+
+.hero-video {
+  filter: saturate(1.05) contrast(1.1) brightness(0.88);
+}
+
+.hero-video-overlay {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 12%, rgba(0, 0, 0, 0.86) 90%);
+}
+
 .mock-line {
   height: 10px;
   border-radius: 999px;
@@ -142,6 +154,10 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .card-sheen::before {
+    display: none;
+  }
+
+  .hero-video {
     display: none;
   }
 }

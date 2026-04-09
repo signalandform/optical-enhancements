@@ -57,28 +57,64 @@ function StoreInfoCard() {
 
 export function Hero() {
   return (
-    <section className="panel p-8 md:p-10" id="store">
-      <div className="mx-auto grid max-w-3xl gap-6 lg:grid-cols-[1fr_1fr]">
-        <div className="flex flex-col items-center justify-center gap-5 text-center lg:items-start lg:text-left">
-          <div className="relative w-full max-w-md overflow-hidden rounded-3xl border border-white/10 bg-black/20 p-4">
-            <div className="relative aspect-[16/9] w-full">
-              <Image
-                src="/images/logo.png"
-                alt="Optical Auto Enhancements"
-                fill
-                sizes="(max-width: 1024px) 420px, 420px"
-                className="object-contain"
-                priority
-              />
+    <section className="panel p-4 md:p-6" id="store">
+      <div className="hero-video-wrap relative overflow-hidden rounded-3xl border border-white/10 bg-black/55">
+        <div className="relative aspect-[4/5] w-full md:aspect-[16/9]">
+          <div className="absolute inset-0">
+            <Image
+              src="/images/logo.png"
+              alt=""
+              fill
+              sizes="100vw"
+              className="object-cover opacity-20"
+              aria-hidden
+              priority
+            />
+          </div>
+          <video
+            className="hero-video absolute inset-0 h-full w-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster="/images/logo.png"
+            aria-label="Optical Auto Enhancements hero video"
+          >
+            <source src="/videos/hero.mov" type="video/quicktime" />
+            Your browser does not support the hero video.
+          </video>
+          <div className="hero-video-overlay absolute inset-0" />
+          <div className="relative z-10 flex h-full items-end p-6 md:p-10">
+            <div className="max-w-xl">
+              <p className="section-label">The studio</p>
+              <h2 className="metallic-text mt-3 font-display text-3xl leading-tight md:text-5xl">
+                Premium tint, PPF, and windshield protection.
+              </h2>
+              <p className="mt-4 max-w-lg text-sm text-white/80 md:text-base">
+                A cinematic, video-led hero gives the same modern first impression your client liked on XPEL while
+                keeping your conversion CTAs front and center.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href="#intake"
+                  className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-gold to-gold-dark px-6 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-night"
+                >
+                  Book now
+                </a>
+                <a
+                  href="#intake"
+                  className="inline-flex items-center justify-center rounded-full border border-white/20 bg-black/25 px-6 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-white"
+                >
+                  Get quote
+                </a>
+              </div>
             </div>
           </div>
-          <p className="section-label">The studio</p>
-          <h2 className="metallic-text font-display text-3xl leading-tight">Metallic protection, clean installs.</h2>
-          <p className="max-w-md text-sm text-muted">
-            This section mirrors the location-style “at a glance” block—now with a larger logo on the left for quick
-            identification.
-          </p>
         </div>
+      </div>
+
+      <div className="mt-6">
         <StoreInfoCard />
       </div>
     </section>
