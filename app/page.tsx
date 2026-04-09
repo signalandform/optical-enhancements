@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import { LocationTitle } from './components/sections/LocationTitle';
 import { Hero } from './components/sections/Hero';
 import { About } from './components/sections/About';
 import { Services } from './components/sections/Services';
@@ -19,9 +18,6 @@ export default function Home() {
   return (
     <main className="site-bg">
       <div className="relative mx-auto flex max-w-6xl flex-col gap-10 px-6 py-12">
-        <Section>
-          <LocationTitle />
-        </Section>
         <Section>
           <Hero />
         </Section>

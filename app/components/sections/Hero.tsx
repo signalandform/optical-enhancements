@@ -92,10 +92,6 @@ export function Hero() {
               <h2 className="metallic-text mt-3 font-display text-3xl leading-tight md:text-5xl">
                 Premium tint, PPF, and windshield protection.
               </h2>
-              <p className="mt-4 max-w-lg text-sm text-white/80 md:text-base">
-                A cinematic, video-led hero gives the same modern first impression your client liked on XPEL while
-                keeping your conversion CTAs front and center.
-              </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
                   href="#intake"
