@@ -1,4 +1,53 @@
+'use client';
+
 import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
+
+type ServiceVideo = {
+  id: 'window-tint' | 'vehicle-wraps' | 'paint-protection' | 'glass-replacement';
+  label: string;
+  href: string;
+  heading: string;
+  sources: Array<{ src: string; type: string }>;
+};
+
+const SERVICE_VIDEOS: ServiceVideo[] = [
+  {
+    id: 'window-tint',
+    label: 'Window Tint',
+    href: '/window-tint',
+    heading: 'Window Tint',
+    sources: [
+      { src: '/videos/window-tint.mp4', type: 'video/mp4' },
+      { src: '/videos/window-tint.mov', type: 'video/mp4' },
+    ],
+  },
+  {
+    id: 'vehicle-wraps',
+    label: 'Vehicle Wraps',
+    href: '/vehicle-wraps',
+    heading: 'Vehicle Wraps',
+    sources: [
+      { src: '/videos/vehicle-wraps.mp4', type: 'video/mp4' },
+      { src: '/videos/vehicle-wraps.mov', type: 'video/mp4' },
+    ],
+  },
+  {
+    id: 'paint-protection',
+    label: 'Paint Protection',
+    href: '/paint-protection',
+    heading: 'Paint Protection',
+    sources: [{ src: '/videos/paint-protection.mp4', type: 'video/mp4' }],
+  },
+  {
+    id: 'glass-replacement',
+    label: 'Glass Replacement',
+    href: '/glass-replacement',
+    heading: 'Glass Replacement',
+    sources: [{ src: '/videos/glass-replacement.mp4', type: 'video/mp4' }],
+  },
+];
 
 function StoreInfoCard() {
   return (
@@ -55,6 +104,9 @@ function StoreInfoCard() {
 }
 
 export function Hero() {
+  const [activeId, setActiveId] = useState<ServiceVideo['id']>('vehicle-wraps');
+  const activeVideo = SERVICE_VIDEOS.find((item) => item.id === activeId) ?? SERVICE_VIDEOS[1];
+
   return (
     <section className="panel p-4 md:p-6" id="store">
       <div className="hero-video-wrap relative overflow-hidden rounded-3xl border border-white/10 bg-black/55">
@@ -71,6 +123,7 @@ export function Hero() {
             />
           </div>
           <video
+            key={activeVideo.id}
             className="hero-video absolute inset-0 h-full w-full object-cover"
             autoPlay
             muted
@@ -80,17 +133,34 @@ export function Hero() {
             poster="/images/logo.png"
             aria-label="Optical Auto Enhancements hero video"
           >
-            <source src="/videos/hero.mp4" type="video/mp4" />
-            <source src="/videos/hero.mov" type="video/mp4" />
+            {activeVideo.sources.map((source) => (
+              <source key={source.src} src={source.src} type={source.type} />
+            ))}
             Your browser does not support the hero video.
           </video>
           <div className="hero-video-overlay absolute inset-0" />
           <div className="relative z-10 flex h-full items-end p-6 md:p-10">
             <div className="max-w-xl">
-              <p className="section-label">The studio</p>
+              <p className="section-label">Service preview</p>
               <h2 className="metallic-text mt-3 font-display text-3xl leading-tight md:text-5xl">
-                Premium tint, PPF, and windshield protection.
+                {activeVideo.heading}
               </h2>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {SERVICE_VIDEOS.map((service) => (
+                  <button
+                    key={service.id}
+                    type="button"
+                    onClick={() => setActiveId(service.id)}
+                    className={`inline-flex rounded-full border px-4 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] transition ${
+                      service.id === activeVideo.id
+                        ? 'border-gold/80 bg-gold/20 text-gold-light'
+                        : 'border-white/20 bg-black/25 text-white/80 hover:text-white'
+                    }`}
+                  >
+                    {service.label}
+                  </button>
+                ))}
+              </div>
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
                   href="#intake"
@@ -104,6 +174,12 @@ export function Hero() {
                 >
                   Get quote
                 </a>
+                <Link
+                  href={activeVideo.href}
+                  className="inline-flex items-center justify-center rounded-full border border-white/20 bg-black/25 px-6 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-white"
+                >
+                  Explore service
+                </Link>
               </div>
             </div>
           </div>
