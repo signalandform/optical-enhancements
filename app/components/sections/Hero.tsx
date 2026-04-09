@@ -105,9 +105,9 @@ function StoreInfoCard() {
 
 function LogoCard() {
   return (
-    <div className="mock-frame card-sheen flex h-full min-h-[220px] w-full items-center justify-center p-6 md:min-h-[260px] md:p-10">
-      <div className="relative h-24 w-[260px] md:h-36 md:w-[400px]">
-        <Image src="/images/logo.png" alt="Optical Auto Enhancements" fill sizes="400px" className="object-contain" />
+    <div className="mock-frame card-sheen flex h-full min-h-[240px] w-full items-center justify-center p-6 md:min-h-[300px] md:p-10">
+      <div className="relative h-28 w-[300px] md:h-44 md:w-[520px]">
+        <Image src="/images/logo.png" alt="Optical Auto Enhancements" fill sizes="520px" className="object-contain" />
       </div>
     </div>
   );
