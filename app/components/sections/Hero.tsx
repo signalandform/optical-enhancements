@@ -111,8 +111,8 @@ function StoreInfoCard() {
 
 function LogoCard() {
   return (
-    <div className="mock-frame card-sheen flex h-full min-h-[220px] items-center justify-center p-6 md:p-8">
-      <div className="relative h-20 w-full max-w-[280px] md:h-24">
+    <div className="mock-frame card-sheen flex min-h-[220px] w-full items-center justify-center p-6 md:w-[320px] md:p-8">
+      <div className="relative h-20 w-[220px] md:h-24 md:w-[280px]">
         <Image src="/images/logo.png" alt="Optical Auto Enhancements" fill sizes="280px" className="object-contain" />
       </div>
     </div>
