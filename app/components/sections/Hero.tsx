@@ -167,7 +167,7 @@ export function Hero() {
                 <h2 className="metallic-text mt-3 font-display text-3xl leading-tight md:text-5xl">
                   {activeVideo.heading}
                 </h2>
-                <div className="hide-scrollbar mt-5 flex flex-nowrap gap-2 overflow-x-auto pb-1">
+                <div className="mt-5 grid grid-cols-2 gap-2 md:grid-cols-4">
                   {SERVICE_VIDEOS.map((service) => (
                     <button
                       key={service.id}
@@ -176,7 +176,7 @@ export function Hero() {
                         setProgress(0);
                         setActiveId(service.id);
                       }}
-                      className={`relative inline-flex shrink-0 overflow-hidden whitespace-nowrap rounded-full border px-4 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] transition ${
+                      className={`relative inline-flex w-full items-center justify-center overflow-hidden whitespace-nowrap rounded-full border px-3 py-1.5 text-[0.58rem] font-semibold uppercase tracking-[0.16em] transition md:px-4 md:text-[0.62rem] md:tracking-[0.2em] ${
                         service.id === activeVideo.id
                           ? 'border-gold/80 text-gold-light'
                           : 'border-white/20 bg-black/25 text-white/80 hover:text-white'
