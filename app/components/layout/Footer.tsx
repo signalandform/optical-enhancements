@@ -29,6 +29,9 @@ export function Footer() {
           <a className="block text-muted hover:text-white" href="/book-now">
             Get a quote
           </a>
+          <a className="block text-muted hover:text-white" href="/contact">
+            Contact us
+          </a>
         </div>
       </div>
       <div className="border-t border-white/10 py-6 text-center text-xs text-white/40">

@@ -1,13 +1,13 @@
 import type { ReactNode } from 'react';
-import { Hero } from './components/sections/Hero';
-import { About } from './components/sections/About';
-import { Services } from './components/sections/Services';
-import { Technology } from './components/sections/Technology';
-import { CallForQuote } from './components/sections/CallForQuote';
-import { Testimonials } from './components/sections/Testimonials';
-import { Promotions } from './components/sections/Promotions';
-import { DarknessGrid } from './components/sections/DarknessGrid';
-import { CTA } from './components/sections/CTA';
+import { Hero } from '@/components/sections/Hero';
+import { About } from '@/components/sections/About';
+import { Services } from '@/components/sections/Services';
+import { Technology } from '@/components/sections/Technology';
+import { CallForQuote } from '@/components/sections/CallForQuote';
+import { Testimonials } from '@/components/sections/Testimonials';
+import { Promotions } from '@/components/sections/Promotions';
+import { DarknessGrid } from '@/components/sections/DarknessGrid';
+import { CTA } from '@/components/sections/CTA';
 
 function Section({ children }: { children: ReactNode }) {
   return <div className="relative">{children}</div>;

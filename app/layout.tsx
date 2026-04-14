@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import { Space_Grotesk, Inter } from 'next/font/google';
 import './globals.css';
-import { Header } from './components/layout/Header';
-import { Footer } from './components/layout/Footer';
 
 const display = Space_Grotesk({
   subsets: ['latin'],
@@ -29,11 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${display.variable} ${inter.variable}`}>
-      <body className="antialiased">
-        <Header />
-        {children}
-        <Footer />
-      </body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
