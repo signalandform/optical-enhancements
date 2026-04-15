@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 import { supabase } from '@/lib/supabase';
+import { getBookedSlotsForDate } from '@/lib/queries';
 
 const SERVICE_TYPES = [
   'Window Tint',
@@ -11,6 +12,30 @@ const SERVICE_TYPES = [
   'Chrome Delete / Graphics',
   'Detailing',
 ];
+
+const TIME_SLOTS = [
+  '8:00 AM',
+  '9:00 AM',
+  '10:00 AM',
+  '11:00 AM',
+  '12:00 PM',
+  '1:00 PM',
+  '2:00 PM',
+  '3:00 PM',
+  '4:00 PM',
+  '5:00 PM',
+];
+
+function getTodayStr() {
+  const d = new Date();
+  return d.toISOString().split('T')[0];
+}
+
+function getMaxDateStr() {
+  const d = new Date();
+  d.setDate(d.getDate() + 14);
+  return d.toISOString().split('T')[0];
+}
 
 type FormStatus = 'idle' | 'sending' | 'sent' | 'error';
 
@@ -23,6 +48,24 @@ export default function BookNowPage() {
   const [preferredTime, setPreferredTime] = useState('');
   const [details, setDetails] = useState('');
   const [status, setStatus] = useState<FormStatus>('idle');
+  const [bookedSlots, setBookedSlots] = useState<string[]>([]);
+  const [loadingSlots, setLoadingSlots] = useState(false);
+
+  useEffect(() => {
+    if (!preferredDate) {
+      setBookedSlots([]);
+      setPreferredTime('');
+      return;
+    }
+    setLoadingSlots(true);
+    setPreferredTime('');
+    getBookedSlotsForDate(preferredDate)
+      .then(setBookedSlots)
+      .catch(() => setBookedSlots([]))
+      .finally(() => setLoadingSlots(false));
+  }, [preferredDate]);
+
+  const availableSlots = TIME_SLOTS.filter((s) => !bookedSlots.includes(s));
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -34,7 +77,7 @@ export default function BookNowPage() {
       customer_phone: customerPhone || null,
       service_type: serviceType,
       preferred_date: preferredDate,
-      preferred_time: preferredTime || null,
+      preferred_time: preferredTime,
       details: details || null,
       status: 'pending',
     });
@@ -56,6 +99,7 @@ export default function BookNowPage() {
     setPreferredTime('');
     setDetails('');
     setStatus('idle');
+    setBookedSlots([]);
   }
 
   if (status === 'sent') {
@@ -147,32 +191,55 @@ export default function BookNowPage() {
               </select>
             </label>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              <label className="space-y-2">
-                <span className="text-xs uppercase tracking-[0.3em] text-muted">Preferred Date *</span>
-                <input
-                  required
-                  type="date"
-                  value={preferredDate}
-                  onChange={(e) => setPreferredDate(e.target.value)}
-                  className="w-full rounded-2xl border border-white/10 bg-night/40 px-4 py-3 text-white focus:border-gold focus:outline-none"
-                />
-              </label>
+            <label className="space-y-2">
+              <span className="text-xs uppercase tracking-[0.3em] text-muted">Date *</span>
+              <input
+                required
+                type="date"
+                value={preferredDate}
+                min={getTodayStr()}
+                max={getMaxDateStr()}
+                onChange={(e) => setPreferredDate(e.target.value)}
+                className="w-full rounded-2xl border border-white/10 bg-night/40 px-4 py-3 text-white focus:border-gold focus:outline-none"
+              />
+            </label>
 
-              <label className="space-y-2">
-                <span className="text-xs uppercase tracking-[0.3em] text-muted">Preferred Time</span>
-                <select
-                  value={preferredTime}
-                  onChange={(e) => setPreferredTime(e.target.value)}
-                  className="w-full rounded-2xl border border-white/10 bg-night/40 px-4 py-3 text-white focus:border-gold focus:outline-none"
-                >
-                  <option value="">No preference</option>
-                  <option value="Morning (8am–12pm)">Morning (8am–12pm)</option>
-                  <option value="Afternoon (12pm–3pm)">Afternoon (12pm–3pm)</option>
-                  <option value="Late Afternoon (3pm–6pm)">Late Afternoon (3pm–6pm)</option>
-                </select>
-              </label>
-            </div>
+            {preferredDate && (
+              <div className="space-y-2">
+                <span className="text-xs uppercase tracking-[0.3em] text-muted">Time Slot *</span>
+                {loadingSlots ? (
+                  <p className="py-2 text-center text-xs text-muted">Checking availability…</p>
+                ) : availableSlots.length === 0 ? (
+                  <p className="rounded-2xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-center text-xs text-red-300">
+                    No slots available on this date. Please pick another day.
+                  </p>
+                ) : (
+                  <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
+                    {TIME_SLOTS.map((slot) => {
+                      const taken = bookedSlots.includes(slot);
+                      const active = preferredTime === slot;
+                      return (
+                        <button
+                          key={slot}
+                          type="button"
+                          disabled={taken}
+                          onClick={() => setPreferredTime(slot)}
+                          className={`rounded-xl border px-2 py-2.5 text-xs font-medium transition-colors ${
+                            taken
+                              ? 'cursor-not-allowed border-white/5 bg-white/5 text-white/20 line-through'
+                              : active
+                                ? 'border-gold/50 bg-gold/20 text-gold'
+                                : 'border-white/10 text-muted hover:border-white/20 hover:text-white'
+                          }`}
+                        >
+                          {slot}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            )}
 
             <label className="space-y-2">
               <span className="text-xs uppercase tracking-[0.3em] text-muted">Details</span>
@@ -192,7 +259,7 @@ export default function BookNowPage() {
 
             <button
               type="submit"
-              disabled={status === 'sending'}
+              disabled={status === 'sending' || !preferredTime}
               className="w-full rounded-full bg-gradient-to-r from-gold to-gold-dark px-6 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-night disabled:opacity-50"
             >
               {status === 'sending' ? 'Submitting…' : 'Submit request'}

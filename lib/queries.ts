@@ -122,3 +122,27 @@ export async function getPendingBookingsCount() {
   if (error) throw error;
   return count ?? 0;
 }
+
+export async function getBookedSlotsForDate(date: string) {
+  const { data, error } = await supabase
+    .from('bookings')
+    .select('preferred_time')
+    .eq('preferred_date', date)
+    .in('status', ['pending', 'confirmed']);
+
+  if (error) throw error;
+  return (data ?? []).map((r) => r.preferred_time).filter(Boolean) as string[];
+}
+
+export async function getBookingsForDateRange(startDate: string, endDate: string) {
+  const { data, error } = await supabase
+    .from('bookings')
+    .select('*')
+    .gte('preferred_date', startDate)
+    .lte('preferred_date', endDate)
+    .order('preferred_date', { ascending: true })
+    .order('preferred_time', { ascending: true });
+
+  if (error) throw error;
+  return data as Booking[];
+}

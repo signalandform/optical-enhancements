@@ -1,3 +1,5 @@
+import { DarknessGrid } from '@/components/sections/DarknessGrid';
+
 export default function WindowTintPage() {
   return (
     <main className="site-bg">
@@ -10,6 +12,8 @@ export default function WindowTintPage() {
               Placeholder scaffold for upcoming service content, pricing tiers, and booking flow.
             </p>
           </div>
+
+          <DarknessGrid />
 
           <div className="grid gap-6 md:grid-cols-2">
             <article className="panel p-6 md:p-8">
