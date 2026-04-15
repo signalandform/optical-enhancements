@@ -26,14 +26,15 @@ const TIME_SLOTS = [
   '5:00 PM',
 ];
 
-function getTodayStr() {
+function getMinDateStr() {
   const d = new Date();
+  d.setDate(d.getDate() + 14);
   return d.toISOString().split('T')[0];
 }
 
 function getMaxDateStr() {
   const d = new Date();
-  d.setDate(d.getDate() + 14);
+  d.setDate(d.getDate() + 28);
   return d.toISOString().split('T')[0];
 }
 
@@ -197,7 +198,7 @@ export default function BookNowPage() {
                 required
                 type="date"
                 value={preferredDate}
-                min={getTodayStr()}
+                min={getMinDateStr()}
                 max={getMaxDateStr()}
                 onChange={(e) => setPreferredDate(e.target.value)}
                 className="w-full rounded-2xl border border-white/10 bg-night/40 px-4 py-3 text-white focus:border-gold focus:outline-none"
