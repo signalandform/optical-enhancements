@@ -28,10 +28,11 @@ export function AdminShell({ children }: { children: ReactNode }) {
     }
     const { data } = await supabase
       .from('cms_admins')
-      .select('user_id')
+      .select('user_id, sites')
       .eq('user_id', s.user.id)
       .maybeSingle();
-    setIsAdmin(!!data);
+    const sites: string[] = data?.sites ?? [];
+    setIsAdmin(sites.includes('optical') || sites.includes('all'));
   }, []);
 
   useEffect(() => {
