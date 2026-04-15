@@ -1,3 +1,6 @@
+-- Optical Auto Enhancements: contact_submissions + bookings
+-- Shares the existing cms_admins table (user_id FK pattern) for admin access.
+
 -- contact_submissions
 create table if not exists public.contact_submissions (
   id          uuid primary key default gen_random_uuid(),
@@ -33,96 +36,61 @@ create table if not exists public.bookings (
 alter table public.contact_submissions enable row level security;
 alter table public.bookings enable row level security;
 
--- cms_admins allow-list (stores admin emails for RLS policies)
-create table if not exists public.cms_admins (
-  email text primary key
-);
-
-alter table public.cms_admins enable row level security;
-
 -- ============================================================
 -- RLS Policies: contact_submissions
+-- Uses existing cms_admins table (user_id = auth.uid())
 -- ============================================================
 
--- Anon can insert (public form submissions)
 create policy "anon_insert_contacts"
   on public.contact_submissions
   for insert
   to anon
   with check (true);
 
--- Authenticated admins can read
 create policy "admin_select_contacts"
   on public.contact_submissions
   for select
   to authenticated
   using (
-    (select exists (
-      select 1 from public.cms_admins
-      where cms_admins.email = auth.jwt() ->> 'email'
-    ))
+    exists (select 1 from cms_admins where cms_admins.user_id = auth.uid())
   );
 
--- Authenticated admins can update (status + notes only)
 create policy "admin_update_contacts"
   on public.contact_submissions
   for update
   to authenticated
   using (
-    (select exists (
-      select 1 from public.cms_admins
-      where cms_admins.email = auth.jwt() ->> 'email'
-    ))
+    exists (select 1 from cms_admins where cms_admins.user_id = auth.uid())
   )
   with check (
-    (select exists (
-      select 1 from public.cms_admins
-      where cms_admins.email = auth.jwt() ->> 'email'
-    ))
+    exists (select 1 from cms_admins where cms_admins.user_id = auth.uid())
   );
 
 -- ============================================================
 -- RLS Policies: bookings
 -- ============================================================
 
--- Anon can insert (public booking form)
 create policy "anon_insert_bookings"
   on public.bookings
   for insert
   to anon
   with check (true);
 
--- Authenticated admins can read
 create policy "admin_select_bookings"
   on public.bookings
   for select
   to authenticated
   using (
-    (select exists (
-      select 1 from public.cms_admins
-      where cms_admins.email = auth.jwt() ->> 'email'
-    ))
+    exists (select 1 from cms_admins where cms_admins.user_id = auth.uid())
   );
 
--- Authenticated admins can update
 create policy "admin_update_bookings"
   on public.bookings
   for update
   to authenticated
   using (
-    (select exists (
-      select 1 from public.cms_admins
-      where cms_admins.email = auth.jwt() ->> 'email'
-    ))
+    exists (select 1 from cms_admins where cms_admins.user_id = auth.uid())
   )
   with check (
-    (select exists (
-      select 1 from public.cms_admins
-      where cms_admins.email = auth.jwt() ->> 'email'
-    ))
+    exists (select 1 from cms_admins where cms_admins.user_id = auth.uid())
   );
-
--- ============================================================
--- Seed: add your admin email(s)
--- ============================================================
--- insert into public.cms_admins (email) values ('your-admin@email.com');

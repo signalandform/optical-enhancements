@@ -1,15 +1,10 @@
 'use client';
 
-import { useEffect, useState, ReactNode } from 'react';
+import { useEffect, useState, useCallback, ReactNode } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
 import type { Session } from '@supabase/supabase-js';
-
-const CMS_ADMINS = (process.env.NEXT_PUBLIC_CMS_ADMINS ?? '')
-  .split(',')
-  .map((e) => e.trim().toLowerCase())
-  .filter(Boolean);
 
 const NAV = [
   { href: '/admin', label: 'Dashboard' },
@@ -19,26 +14,42 @@ const NAV = [
 
 export function AdminShell({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [authError, setAuthError] = useState('');
   const pathname = usePathname();
 
+  const checkAdmin = useCallback(async (s: Session | null) => {
+    if (!s) {
+      setIsAdmin(false);
+      return;
+    }
+    const { data } = await supabase
+      .from('cms_admins')
+      .select('user_id')
+      .eq('user_id', s.user.id)
+      .maybeSingle();
+    setIsAdmin(!!data);
+  }, []);
+
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session: s } }) => {
+    supabase.auth.getSession().then(async ({ data: { session: s } }) => {
       setSession(s);
+      await checkAdmin(s);
       setLoading(false);
     });
 
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, s) => {
+    } = supabase.auth.onAuthStateChange(async (_event, s) => {
       setSession(s);
+      await checkAdmin(s);
     });
 
     return () => subscription.unsubscribe();
-  }, []);
+  }, [checkAdmin]);
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
@@ -64,7 +75,6 @@ export function AdminShell({ children }: { children: ReactNode }) {
   }
 
   const userEmail = session?.user?.email?.toLowerCase();
-  const isAdmin = userEmail && CMS_ADMINS.includes(userEmail);
 
   if (!session || !isAdmin) {
     return (
