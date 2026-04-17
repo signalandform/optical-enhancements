@@ -15,7 +15,7 @@ export function Footer() {
             (469) 531‑6909
           </a>
           <p className="text-muted">1516 Osprey Dr #207, DeSoto, TX</p>
-          <p className="text-muted">Mon–Sat 8am–6pm · Closed Sundays</p>
+          <p className="text-muted">Mon–Sat 9am–6pm · Closed Sundays</p>
         </div>
 
         <div className="space-y-2 text-sm">

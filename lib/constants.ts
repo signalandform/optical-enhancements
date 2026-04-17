@@ -8,7 +8,6 @@ export const SERVICE_TYPES = [
 ] as const;
 
 export const TIME_SLOTS = [
-  '8:00 AM',
   '9:00 AM',
   '10:00 AM',
   '11:00 AM',

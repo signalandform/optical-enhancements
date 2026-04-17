@@ -86,7 +86,7 @@ function StoreInfoCard() {
         </div>
         <div className="grid-divider pt-3">
           <p className="text-xs uppercase tracking-[0.35em] text-[rgba(212,175,55,0.7)]">Hours</p>
-          <p className="mt-1 text-white/90">Mon–Sat: 8am–6pm</p>
+          <p className="mt-1 text-white/90">Mon–Sat: 9am–6pm</p>
           <p className="text-muted">Closed Sundays</p>
         </div>
 

@@ -35,7 +35,7 @@ export default function UnderConstructionPage() {
             (469) 531‑6909
           </a>
           <p className="text-xs uppercase tracking-[0.3em] text-muted">
-            Mon–Sat 8am–6pm
+            Mon–Sat 9am–6pm
           </p>
         </div>
 
