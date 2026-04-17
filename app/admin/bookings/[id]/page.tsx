@@ -39,11 +39,19 @@ export default function BookingDetailPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center gap-3">
+      <div className="flex flex-wrap items-center gap-3">
         <Link href="/admin/bookings" className="text-sm text-muted hover:text-white">
           ← Bookings
         </Link>
         <StatusBadge status={booking.status} />
+        {booking.customer_id && (
+          <Link
+            href={`/admin/customers/${booking.customer_id}`}
+            className="text-xs text-gold hover:underline"
+          >
+            View customer →
+          </Link>
+        )}
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">

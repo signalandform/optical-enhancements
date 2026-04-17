@@ -40,11 +40,19 @@ export default function ContactDetailPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center gap-3">
+      <div className="flex flex-wrap items-center gap-3">
         <Link href="/admin/contacts" className="text-sm text-muted hover:text-white">
           ← Contacts
         </Link>
         <StatusBadge status={contact.status} />
+        {contact.customer_id && (
+          <Link
+            href={`/admin/customers/${contact.customer_id}`}
+            className="text-xs text-gold hover:underline"
+          >
+            View customer →
+          </Link>
+        )}
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">

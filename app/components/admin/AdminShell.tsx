@@ -9,6 +9,7 @@ import type { Session } from '@supabase/supabase-js';
 const NAV = [
   { href: '/admin', label: 'Dashboard' },
   { href: '/admin/calendar', label: 'Calendar' },
+  { href: '/admin/customers', label: 'Customers' },
   { href: '/admin/contacts', label: 'Contacts' },
   { href: '/admin/bookings', label: 'Bookings' },
   { href: '/admin/account', label: 'Account' },

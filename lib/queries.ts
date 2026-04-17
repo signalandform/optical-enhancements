@@ -1,5 +1,15 @@
 import { supabase } from './supabase';
 
+export type Customer = {
+  id: string;
+  name: string;
+  email: string | null;
+  phone: string | null;
+  notes: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
 export type ContactSubmission = {
   id: string;
   name: string;
@@ -8,6 +18,7 @@ export type ContactSubmission = {
   message: string;
   status: 'new' | 'read' | 'replied' | 'archived';
   admin_notes: string | null;
+  customer_id: string | null;
   created_at: string;
   updated_at: string;
 };
@@ -23,6 +34,7 @@ export type Booking = {
   details: string | null;
   status: 'pending' | 'confirmed' | 'completed' | 'cancelled';
   admin_notes: string | null;
+  customer_id: string | null;
   created_at: string;
   updated_at: string;
 };
@@ -145,4 +157,92 @@ export async function getBookingsForDateRange(startDate: string, endDate: string
 
   if (error) throw error;
   return data as Booking[];
+}
+
+// ============================================================
+// Customers CRM
+// ============================================================
+
+export async function getCustomers(search?: string) {
+  let query = supabase.from('customers').select('*').order('updated_at', { ascending: false });
+
+  if (search && search.trim()) {
+    const term = `%${search.trim()}%`;
+    query = query.or(`name.ilike.${term},email.ilike.${term},phone.ilike.${term}`);
+  }
+
+  const { data, error } = await query;
+  if (error) throw error;
+  return data as Customer[];
+}
+
+export async function getCustomer(id: string) {
+  const { data, error } = await supabase
+    .from('customers')
+    .select('*')
+    .eq('id', id)
+    .single();
+
+  if (error) throw error;
+  return data as Customer;
+}
+
+export async function getCustomerBookings(customerId: string) {
+  const { data, error } = await supabase
+    .from('bookings')
+    .select('*')
+    .eq('customer_id', customerId)
+    .order('preferred_date', { ascending: false });
+
+  if (error) throw error;
+  return data as Booking[];
+}
+
+export async function getCustomerContacts(customerId: string) {
+  const { data, error } = await supabase
+    .from('contact_submissions')
+    .select('*')
+    .eq('customer_id', customerId)
+    .order('created_at', { ascending: false });
+
+  if (error) throw error;
+  return data as ContactSubmission[];
+}
+
+export async function createCustomer(input: {
+  name: string;
+  email?: string | null;
+  phone?: string | null;
+  notes?: string | null;
+}) {
+  const { data, error } = await supabase
+    .from('customers')
+    .insert({
+      name: input.name,
+      email: input.email || null,
+      phone: input.phone || null,
+      notes: input.notes || null,
+    })
+    .select('*')
+    .single();
+
+  if (error) throw error;
+  return data as Customer;
+}
+
+export async function updateCustomer(
+  id: string,
+  updates: { name?: string; email?: string | null; phone?: string | null; notes?: string | null }
+) {
+  const { error } = await supabase
+    .from('customers')
+    .update({ ...updates, updated_at: new Date().toISOString() })
+    .eq('id', id);
+
+  if (error) throw error;
+}
+
+export async function deleteCustomer(id: string) {
+  const { error } = await supabase.from('customers').delete().eq('id', id);
+  if (error) throw error;
 }
