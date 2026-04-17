@@ -137,10 +137,9 @@ export async function getPendingBookingsCount() {
 
 export async function getBookedSlotsForDate(date: string) {
   const { data, error } = await supabase
-    .from('bookings')
+    .from('booking_availability')
     .select('preferred_time')
-    .eq('preferred_date', date)
-    .in('status', ['pending', 'confirmed']);
+    .eq('preferred_date', date);
 
   if (error) throw error;
   return (data ?? []).map((r) => r.preferred_time).filter(Boolean) as string[];
