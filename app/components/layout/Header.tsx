@@ -6,6 +6,7 @@ const nav = [
   { href: '/vehicle-wraps', label: 'Vehicle Wraps' },
   { href: '/paint-protection', label: 'Paint Protection' },
   { href: '/glass-replacement', label: 'Glass Replacement' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export function Header() {
