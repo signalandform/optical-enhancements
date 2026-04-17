@@ -3,28 +3,7 @@
 import { useState, useEffect, FormEvent } from 'react';
 import { supabase } from '@/lib/supabase';
 import { getBookedSlotsForDate } from '@/lib/queries';
-
-const SERVICE_TYPES = [
-  'Window Tint',
-  'Paint Protection Film',
-  'Vehicle Wrap',
-  'Windshield / Glass Replacement',
-  'Chrome Delete / Graphics',
-  'Detailing',
-];
-
-const TIME_SLOTS = [
-  '8:00 AM',
-  '9:00 AM',
-  '10:00 AM',
-  '11:00 AM',
-  '12:00 PM',
-  '1:00 PM',
-  '2:00 PM',
-  '3:00 PM',
-  '4:00 PM',
-  '5:00 PM',
-];
+import { SERVICE_TYPES, TIME_SLOTS } from '@/lib/constants';
 
 function getMinDateStr() {
   const d = new Date();
@@ -44,7 +23,7 @@ export default function BookNowPage() {
   const [customerName, setCustomerName] = useState('');
   const [customerEmail, setCustomerEmail] = useState('');
   const [customerPhone, setCustomerPhone] = useState('');
-  const [serviceType, setServiceType] = useState(SERVICE_TYPES[0]);
+  const [serviceType, setServiceType] = useState<string>(SERVICE_TYPES[0]);
   const [preferredDate, setPreferredDate] = useState('');
   const [preferredTime, setPreferredTime] = useState('');
   const [details, setDetails] = useState('');
