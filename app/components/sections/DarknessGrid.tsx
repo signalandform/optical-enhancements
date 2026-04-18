@@ -9,11 +9,11 @@ type TintTile = {
 
 const tintTiles: TintTile[] = [
   { vlt: 5, label: 'LIMO' },
-  { vlt: 10, label: 'DARK' },
   { vlt: 15, label: 'DARK' },
-  { vlt: 20, label: 'BALANCE' },
-  { vlt: 25, label: 'LEGAL TX' },
+  { vlt: 30, label: 'LEGAL TX' },
   { vlt: 35, label: 'LIGHT' },
+  { vlt: 50, label: 'MEDIUM' },
+  { vlt: 70, label: 'CLEAR' },
 ];
 
 function clamp(min: number, val: number, max: number) {
@@ -72,7 +72,7 @@ function PreviewCard({
 }
 
 export function DarknessGrid() {
-  const [selected, setSelected] = useState<TintTile>(tintTiles[4]);
+  const [selected, setSelected] = useState<TintTile>(tintTiles[2]);
 
   const overlayOpacity = useMemo(() => {
     // Map VLT (5–70) to overlay darkness (0.75–0.15). Lower VLT -> darker.
@@ -135,8 +135,9 @@ export function DarknessGrid() {
                 i
               </div>
               <p className="text-sm text-muted">
-                <span className="font-semibold text-white/80">PRO TIP:</span> 25% is the legal limit for front side windows in
-                Texas. Back and rear windows have no limit.
+                <span className="font-semibold text-white/80">PRO TIP:</span> 30% film typically reads between 25%–28% on a
+                tint meter due to roughly 3% variability in readouts—keeping you compliant with the 25% Texas legal limit for
+                front side windows. Back and rear windows have no limit.
               </p>
             </div>
 
