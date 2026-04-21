@@ -10,6 +10,7 @@ const nav = [
   { href: '/vehicle-wraps', label: 'Vehicle Wraps' },
   { href: '/paint-protection', label: 'Paint Protection' },
   { href: '/glass-replacement', label: 'Glass Replacement' },
+  { href: '/printing-services', label: 'Printing Services' },
   { href: '/contact', label: 'Contact' },
 ];
 
