@@ -131,7 +131,7 @@ export function Header() {
                   : 'hidden'
               }
             >
-              <ul className="panel py-2 shadow-2xl">
+              <ul className="overflow-hidden rounded-2xl border border-white/10 bg-black py-2 shadow-2xl">
                 {serviceLinks.map((item) => {
                   const active =
                     pathname === item.href || pathname.startsWith(`${item.href}/`);
