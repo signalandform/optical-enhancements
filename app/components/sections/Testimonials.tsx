@@ -44,7 +44,7 @@ export function Testimonials() {
           </div>
           <div className="mock-frame card-sheen px-5 py-4">
             <p className="text-xs uppercase tracking-[0.35em] text-[rgba(212,175,55,0.78)]">Rating</p>
-            <p className="mt-2 text-2xl font-semibold text-white">5.0</p>
+            <p className="mt-2 text-2xl font-semibold text-white">4.9</p>
             <a
               href={GOOGLE_BUSINESS_URL}
               target="_blank"
