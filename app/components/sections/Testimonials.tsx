@@ -1,27 +1,35 @@
+const GOOGLE_BUSINESS_URL = 'https://share.google/rb2n8ac9Kvd6zjNsV';
+
 const reviews = [
   {
-    quote: 'Third time bringing vehicles in. Clean edges, no contamination, and the quote process is insanely clear.',
-    author: 'Corey S.',
+    quote:
+      'I had an excellent experience with optical tint. The staff was very friendly, welcoming, and professional from start to finish. They took the time to answer all my questions and made sure I was comfortable with my tint selection.',
+    author: 'Ricky K.',
   },
   {
-    quote: 'Quick, friendly, and top-notch every time. Looks factory.',
-    author: 'Athena R.',
+    quote:
+      "Amazing work, took my Supra to get tinted all around, and the work was flawless. Plus there's a nice clean waiting room with snacks and TV — what more can you ask for. The owner takes pride in his work and his shop and treats your car like his own.",
+    author: 'Ezequiel A.',
   },
   {
-    quote: 'Explained the film differences and nailed the percentage I wanted. Very professional.',
-    author: 'C. K.',
+    quote:
+      "My husband and I always use Optical Tint for all our vehicle's tint. The quality of the material is top notch and customer service is always excellent. They always take care of our window tinting needs. Definitely worth the drive from Plano! Thank you Junior!",
+    author: 'Lorena H.',
   },
   {
-    quote: 'In and out under two hours. Great job.',
-    author: 'Jon H.',
+    quote:
+      "We're extremely happy with the car wrap and tint they did on our vehicles. The team is super friendly, their work is top-notch, and their prices are fantastic. If you're looking for great quality at a great price, definitely reach out to these guys!",
+    author: 'Harry R.',
   },
   {
-    quote: 'They fit me in last minute and it came out better than expected.',
-    author: 'Nina F.',
+    quote:
+      'Excellent tint replacement job for a reasonable price and a good warranty. Great customer service as well. Highly recommend.',
+    author: 'Zavier J.',
   },
   {
-    quote: 'Awesome customer service. I’ll be back with the next car.',
-    author: 'Erica C.',
+    quote:
+      "Got my Malibu tinted quick! Got nano ceramic and it's the best — thank you for giving me advice on which tint to use. You guys are the best.",
+    author: 'Alex R.',
   },
 ];
 
@@ -37,7 +45,14 @@ export function Testimonials() {
           <div className="mock-frame card-sheen px-5 py-4">
             <p className="text-xs uppercase tracking-[0.35em] text-[rgba(212,175,55,0.78)]">Rating</p>
             <p className="mt-2 text-2xl font-semibold text-white">5.0</p>
-            <p className="mt-1 text-xs uppercase tracking-[0.28em] text-muted">Google-style summary</p>
+            <a
+              href={GOOGLE_BUSINESS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-block text-xs font-semibold uppercase tracking-[0.28em] text-gold underline decoration-gold/40 underline-offset-2 transition hover:text-gold-light hover:decoration-gold"
+            >
+              Google Business profile
+            </a>
           </div>
         </div>
 
