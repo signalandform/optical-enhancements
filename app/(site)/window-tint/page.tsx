@@ -97,10 +97,6 @@ export default function WindowTintPage() {
                   cannot exceed 25% reflectiveness.
                 </li>
               </ul>
-              <p className="mt-4 text-xs text-muted">
-                We ensure every installation meets Texas DOT regulations so you never have to
-                worry about a fix-it ticket.
-              </p>
             </div>
 
             <div className="panel p-8">

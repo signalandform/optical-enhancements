@@ -11,7 +11,6 @@ const tintTiles: TintTile[] = [
   { vlt: 5, label: 'LIMO' },
   { vlt: 15, label: 'DARK' },
   { vlt: 30, label: 'LEGAL TX' },
-  { vlt: 35, label: 'LIGHT' },
   { vlt: 50, label: 'MEDIUM' },
   { vlt: 70, label: 'CLEAR' },
 ];

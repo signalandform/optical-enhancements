@@ -72,9 +72,13 @@ export default function GlassReplacementPage() {
                   automotive-grade urethane adhesive.
                 </li>
                 <li>
-                  <strong className="text-white">4. ADAS Calibration:</strong> If your vehicle
-                  has lane departure warning, automatic emergency braking, or rain-sensing
-                  wipers, the front camera system is recalibrated after installation.
+                  <strong className="text-white">4. ADAS (when it applies):</strong> If your
+                  car uses a windshield-mounted camera, some replacements need the driver-assist
+                  system recalibrated to manufacturer spec. Many installs don&apos;t need it at
+                  all—it depends on the vehicle and the glass. We only do a recalibration when
+                  the procedure is required for your VIN, or if the car isn&apos;t reading the
+                  camera / road correctly and the safety features aren&apos;t working as they
+                  should. Vehicles without that hardware skip this step entirely.
                 </li>
                 <li>
                   <strong className="text-white">5. Curing &amp; Quality Check:</strong> We verify

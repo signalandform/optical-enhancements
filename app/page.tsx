@@ -1,23 +1,8 @@
-import Image from 'next/image';
-
 export default function UnderConstructionPage() {
   return (
     <main className="site-bg relative flex min-h-screen items-center justify-center px-6">
       <div className="relative z-10 flex w-full max-w-xl flex-col items-center text-center">
-        <div className="relative h-24 w-[280px] sm:h-32 sm:w-[360px]">
-          <Image
-            src="/images/logo.png"
-            alt="Optical Auto Enhancements"
-            fill
-            sizes="(min-width: 640px) 360px, 280px"
-            className="object-contain"
-            priority
-          />
-        </div>
-
-        <div className="mt-12 h-px w-16 bg-gradient-to-r from-transparent via-gold to-transparent" />
-
-        <p className="section-label mt-12">Coming Soon</p>
+        <p className="section-label">Coming Soon</p>
         <h1 className="mt-6 font-display text-4xl leading-tight text-white sm:text-5xl">
           Site Under <span className="metallic-text">Construction</span>
         </h1>

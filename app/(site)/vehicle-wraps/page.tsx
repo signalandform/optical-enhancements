@@ -26,6 +26,38 @@ export default function VehicleWrapsPage() {
           </div>
 
           <div className="panel p-8 md:p-10">
+            <p className="section-label">What we offer</p>
+            <h2 className="mt-4 font-display text-2xl text-white sm:text-3xl">
+              Wrap services
+            </h2>
+            <div className="mt-6 grid gap-6 sm:grid-cols-2">
+              {[
+                {
+                  title: 'Fleet',
+                  body: 'Branded graphics across multiple company vehicles: consistent colors, logos, and service panels, plus scheduling that keeps your fleet on the road.',
+                },
+                {
+                  title: 'Partial wraps',
+                  body: 'Stripes, two-tone, roof, hood, mirrors, and accent panels without a full re-color — faster turnaround and a bold look for less than a full wrap.',
+                },
+                {
+                  title: 'In-house design',
+                  body: 'Layout, file prep, and print-ready art produced here. Bring a logo or a rough idea, or work with us on full vehicle art before we print and install.',
+                },
+                {
+                  title: 'Automotive',
+                  body: 'Cars, trucks, and SUVs: daily drivers, work trucks, and show vehicles. We size film and graphics for automotive panels and work around trim, door jambs, and body lines.',
+                },
+              ].map((item) => (
+                <div key={item.title} className="space-y-2 rounded-2xl border border-white/10 bg-white/[0.02] p-5">
+                  <h3 className="text-sm font-semibold text-white">{item.title}</h3>
+                  <p className="text-sm leading-relaxed text-muted">{item.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="panel p-8 md:p-10">
             <p className="section-label">Why wrap?</p>
             <h2 className="mt-4 font-display text-2xl text-white sm:text-3xl">
               More Than Just a Color Change
