@@ -1,5 +1,51 @@
 import Link from 'next/link';
 
+const wrapPackages = [
+  {
+    badge: 'Style Upgrade',
+    title: 'Color Change Wrap',
+    description:
+      'Completely transform your vehicle with a new color or finish without permanent paint.',
+    features: [
+      'Matte, gloss, satin, or custom finishes',
+      'Protects original paint',
+      'Fully removable',
+      'Stand out on the road',
+    ],
+    bestFor: 'Drivers who want a unique, head-turning look',
+    cta: 'Explore Colors',
+  },
+  {
+    badge: 'Most Popular',
+    title: 'Commercial Wraps',
+    description:
+      'Turn your vehicle into a moving billboard that advertises your business 24/7.',
+    features: [
+      'Custom logo and design',
+      'Increase brand visibility',
+      'Professional appearance',
+      'One-time cost, long-term exposure',
+    ],
+    bestFor: 'Business owners looking to grow visibility and leads',
+    cta: 'Get a Quote',
+    featured: true,
+  },
+  {
+    badge: 'Subtle Customization',
+    title: 'Partial Wraps',
+    description:
+      'Add custom accents, stripes, or branding without wrapping the entire vehicle.',
+    features: [
+      'More affordable option',
+      'Custom designs and graphics',
+      'Perfect for logos or accents',
+      'Fast installation',
+    ],
+    bestFor: 'Drivers or businesses wanting a clean, custom touch',
+    cta: 'Customize Your Wrap',
+  },
+];
+
 export default function VehicleWrapsPage() {
   return (
     <main className="site-bg">
@@ -23,6 +69,98 @@ export default function VehicleWrapsPage() {
             >
               Get a quote
             </Link>
+          </div>
+
+          <div className="panel overflow-hidden p-8 md:p-10">
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="section-label">Wrap Packages</p>
+              <h2 className="mt-4 font-display text-3xl text-white sm:text-4xl">
+                Transform Your Vehicle. Make It Stand Out.
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-muted">
+                Custom wraps for style, branding, and full vehicle protection.
+              </p>
+            </div>
+
+            <div className="mt-8 grid gap-5 lg:grid-cols-3">
+              {wrapPackages.map((tier) => (
+                <article
+                  key={tier.title}
+                  className={`card-sheen flex h-full flex-col rounded-3xl border p-6 text-center ${
+                    tier.featured
+                      ? 'border-gold/80 bg-gold/10 shadow-gold'
+                      : 'border-white/10 bg-white/[0.03]'
+                  }`}
+                >
+                  <div>
+                    <span
+                      className={`inline-flex rounded-md border px-4 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] ${
+                        tier.featured
+                          ? 'border-gold/50 bg-gradient-to-r from-gold to-gold-dark text-night'
+                          : 'border-gold/30 bg-black/30 text-gold'
+                      }`}
+                    >
+                      {tier.badge}
+                    </span>
+                    <h3 className="mt-5 font-display text-2xl text-white">{tier.title}</h3>
+                    <p className="mx-auto mt-3 max-w-xs text-sm leading-relaxed text-muted">
+                      {tier.description}
+                    </p>
+                  </div>
+
+                  <ul className="mt-6 space-y-3 text-left text-sm text-muted">
+                    {tier.features.map((feature) => (
+                      <li key={feature} className="flex gap-3">
+                        <svg
+                          aria-hidden="true"
+                          className="mt-0.5 h-4 w-4 flex-none text-gold"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="m5 12 4 4L19 6"
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                          />
+                        </svg>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-6 flex flex-1 flex-col justify-end border-t border-white/10 pt-6">
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-gold">
+                      Best For
+                    </p>
+                    <p className="mt-2 text-sm font-semibold text-white">{tier.bestFor}</p>
+                    <Link
+                      href="/book-now"
+                      className={`mt-5 inline-flex justify-center rounded-full px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] ${
+                        tier.featured
+                          ? 'bg-gradient-to-r from-gold to-gold-dark text-night'
+                          : 'border border-white/15 text-muted hover:border-gold/50 hover:text-white'
+                      }`}
+                    >
+                      {tier.cta}
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-8 border-t border-white/10 pt-6 text-center">
+              <p className="text-sm font-semibold text-white">Not sure what you need?</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted">
+                Want a new look?{' '}
+                <span className="font-semibold text-gold">Color Change</span> | Want to grow
+                your brand?{' '}
+                <span className="font-semibold text-gold">Commercial Wraps</span> | Want
+                something simple?{' '}
+                <span className="font-semibold text-gold">Partial Wraps</span>
+              </p>
+            </div>
           </div>
 
           <div className="panel p-8 md:p-10">

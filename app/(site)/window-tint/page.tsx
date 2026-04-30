@@ -1,6 +1,49 @@
 import Link from 'next/link';
 import { DarknessGrid } from '@/components/sections/DarknessGrid';
 
+const tintPackages = [
+  {
+    badge: 'Budget Friendly',
+    title: 'Carbon Film',
+    description: 'A great entry-level tint that improves looks and reduces heat.',
+    features: [
+      'Reduces glare and sunlight',
+      'Keeps your car cooler',
+      'Fade-resistant with no purple tint',
+      'Clean, dark finish',
+    ],
+    bestFor: 'Everyday drivers on a budget',
+    cta: 'Get Carbon Tint',
+  },
+  {
+    badge: 'Most Popular',
+    title: 'Ceramic Film',
+    description: 'The perfect balance of performance, comfort, and value.',
+    features: [
+      'Blocks significantly more heat',
+      'Reduces glare and UV rays',
+      'Keeps interior much cooler',
+      'No signal interference',
+    ],
+    bestFor: 'Daily drivers who want real comfort',
+    cta: 'Get Ceramic Tint',
+    featured: true,
+  },
+  {
+    badge: 'Ultimate Performance',
+    title: 'Nano Ceramic',
+    description: 'Top-tier tint with maximum heat rejection and clarity.',
+    features: [
+      'Maximum heat rejection',
+      'Superior UV protection',
+      'Crystal-clear visibility',
+      'Best for extreme heat',
+    ],
+    bestFor: 'Drivers who want the best',
+    cta: 'Get Nano Ceramic',
+  },
+];
+
 export default function WindowTintPage() {
   return (
     <main className="site-bg">
@@ -34,6 +77,96 @@ export default function WindowTintPage() {
           </div>
 
           <DarknessGrid />
+
+          <div className="panel overflow-hidden p-8 md:p-10">
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="section-label">Tint Film Packages</p>
+              <h2 className="mt-4 font-display text-3xl text-white sm:text-4xl">
+                Choose Your Tint Level
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-muted">
+                Compare your options and pick what fits your comfort, style, and budget.
+              </p>
+            </div>
+
+            <div className="mt-8 grid gap-5 lg:grid-cols-3">
+              {tintPackages.map((tier) => (
+                <article
+                  key={tier.title}
+                  className={`card-sheen flex h-full flex-col rounded-3xl border p-6 text-center ${
+                    tier.featured
+                      ? 'border-gold/80 bg-gold/10 shadow-gold'
+                      : 'border-white/10 bg-white/[0.03]'
+                  }`}
+                >
+                  <div>
+                    <span
+                      className={`inline-flex rounded-md border px-4 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] ${
+                        tier.featured
+                          ? 'border-gold/50 bg-gradient-to-r from-gold to-gold-dark text-night'
+                          : 'border-gold/30 bg-black/30 text-gold'
+                      }`}
+                    >
+                      {tier.badge}
+                    </span>
+                    <h3 className="mt-5 font-display text-2xl text-white">{tier.title}</h3>
+                    <p className="mx-auto mt-3 max-w-xs text-sm leading-relaxed text-muted">
+                      {tier.description}
+                    </p>
+                  </div>
+
+                  <ul className="mt-6 space-y-3 text-left text-sm text-muted">
+                    {tier.features.map((feature) => (
+                      <li key={feature} className="flex gap-3">
+                        <svg
+                          aria-hidden="true"
+                          className="mt-0.5 h-4 w-4 flex-none text-gold"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="m5 12 4 4L19 6"
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                          />
+                        </svg>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-6 flex flex-1 flex-col justify-end border-t border-white/10 pt-6">
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-gold">
+                      Best For
+                    </p>
+                    <p className="mt-2 text-sm font-semibold text-white">{tier.bestFor}</p>
+                    <Link
+                      href="/book-now"
+                      className={`mt-5 inline-flex justify-center rounded-full px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] ${
+                        tier.featured
+                          ? 'bg-gradient-to-r from-gold to-gold-dark text-night'
+                          : 'border border-white/15 text-muted hover:border-gold/50 hover:text-white'
+                      }`}
+                    >
+                      {tier.cta}
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-8 border-t border-white/10 pt-6 text-center">
+              <p className="text-sm font-semibold text-white">Not sure which to choose?</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted">
+                Want the most affordable?{' '}
+                <span className="font-semibold text-gold">Carbon</span> | Want the best value?{' '}
+                <span className="font-semibold text-gold">Ceramic</span> | Want the absolute best?{' '}
+                <span className="font-semibold text-gold">Nano Ceramic</span>
+              </p>
+            </div>
+          </div>
 
           <div className="panel p-8 md:p-10">
             <p className="section-label">Why tint your windows?</p>
